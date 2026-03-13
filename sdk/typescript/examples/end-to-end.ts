@@ -23,8 +23,8 @@ async function main() {
   // Step 1: Principal generates keys
   console.log("1. Generating principal keypair...");
   const principal = await DAPPrincipal.generate({
-    id: "did:web:romashka.example",
-    name: "Romashka LLC",
+    id: "did:web:acme-corp.example",
+    name: "Acme Inc",
   });
   console.log(`   Principal: ${principal.name} (${principal.id})\n`);
 
@@ -35,7 +35,7 @@ async function main() {
     scope: ["register", "read_data", "submit_forms"],
     principalType: "organization",
     purpose: "Supplier procurement automation",
-    contactEmail: "tech@romashka.example",
+    contactEmail: "tech@acme-corp.example",
     expiresIn: "24h",
     verification: { level: "domain", method: "did:web" },
   });
@@ -63,7 +63,7 @@ async function main() {
     credential,
     agent_card: {
       name: "Procurement Bot v1",
-      description: "Supplier procurement agent for Romashka LLC",
+      description: "Supplier procurement agent for Acme Inc",
       version: "1.0.0",
       capabilities: ["search", "compare", "request_quote"],
     },
@@ -127,10 +127,10 @@ async function main() {
     principalType: "individual",
     // Override principal identity to the actual user (not the issuer)
     principalId: "https://accounts.google.com/user/12345",
-    principalName: "Vasily Petrov",
+    principalName: "James Wilson",
     issuerId: "https://dap-wallet.example",
     purpose: "Restaurant search and booking",
-    contactEmail: "vasily@gmail.com",
+    contactEmail: "james.w@example.com",
     expiresIn: "12h",
     verification: {
       level: "oauth",
@@ -166,7 +166,7 @@ async function main() {
     credential: delegatedCredential,
     agent_card: {
       name: "Booking Bot v1",
-      description: "Restaurant booking agent for Vasily Petrov",
+      description: "Restaurant booking agent for James Wilson",
       version: "1.0.0",
       capabilities: ["search", "book"],
     },

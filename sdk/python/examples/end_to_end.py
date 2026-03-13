@@ -29,8 +29,8 @@ async def main() -> None:
     # -- Step 1: Principal generates keys --
     print("1. Generating principal keypair...")
     principal = DAPPrincipal.generate(
-        principal_id="did:web:romashka.example",
-        name="OOO Romashka",
+        principal_id="did:web:acme-corp.example",
+        name="Acme Inc",
     )
     print(f"   Principal: {principal.name} ({principal.principal_id})\n")
 
@@ -41,7 +41,7 @@ async def main() -> None:
         scope=["register", "read_data", "submit_forms"],
         principal_type="organization",
         purpose="Supplier procurement automation",
-        contact_email="tech@romashka.example",
+        contact_email="tech@acme-corp.example",
         expires_in="24h",
         verification=Verification(level="domain", method="did:web"),
     )
@@ -67,7 +67,7 @@ async def main() -> None:
             credential=credential,
             agent_card=AgentCard(
                 name="Procurement Bot v1",
-                description="Supplier procurement agent for OOO Romashka",
+                description="Supplier procurement agent for Acme Inc",
                 version="1.0.0",
                 capabilities=["search", "compare", "request_quote"],
             ),

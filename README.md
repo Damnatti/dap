@@ -77,8 +77,8 @@ import { importJWK } from "jose";
 
 // 1. Principal issues a credential to the agent
 const principal = await DAPPrincipal.generate({
-  id: "did:web:romashka.example",
-  name: "Romashka LLC",
+  id: "did:web:acme-corp.example",
+  name: "Acme Inc",
 });
 
 const credential = await principal.issueCredential({
@@ -99,7 +99,7 @@ const result = await service.handleRegister({
   credential,
   agent_card: { name: "Procurement Bot", version: "1.0.0" },
 });
-// → { status: 'registered', access_token: '...', session_id: '...', account_id: '...', principal_display: 'Romashka LLC' }
+// → { status: 'registered', access_token: '...', session_id: '...', account_id: '...', principal_display: 'Acme Inc' }
 ```
 
 ## Quick example (Python)
@@ -108,7 +108,7 @@ const result = await service.handleRegister({
 from dap_sdk import DAPPrincipal, DAPService, RegisterRequest, AgentCard
 
 # 1. Principal issues a credential
-principal = DAPPrincipal.generate(principal_id="did:web:romashka.example", name="Romashka LLC")
+principal = DAPPrincipal.generate(principal_id="did:web:acme-corp.example", name="Acme Inc")
 credential = principal.issue_credential(
     agent_id="urn:dap:agent:my-bot",
     scope=["register", "read_data"],
@@ -121,12 +121,24 @@ service = DAPService(
     base_url="https://supplier-portal.com",
     resolve_public_key=get_principal_key,
 )
-result = service.handle_register(RegisterRequest(
+result = await service.handle_register(RegisterRequest(
     credential=credential,
     agent_card=AgentCard(name="Procurement Bot"),
 ))
-# → {"status": "registered", "access_token": "...", "account_id": "...", "principal_display": "Romashka LLC"}
+# → {"status": "registered", "access_token": "...", "account_id": "...", "principal_display": "Acme Inc"}
 ```
+
+## Try it
+
+Run the interactive demo — 4 real-world scenarios with actual HTTP servers:
+
+```bash
+cd sdk/typescript
+npm install
+npm run demo
+```
+
+You'll see a food delivery agent, a medical appointment bot, a bank transfer bot, and an API marketplace scout — each going through discovery, registration, and an API call.
 
 ## What's in this repo
 

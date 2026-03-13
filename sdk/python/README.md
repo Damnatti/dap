@@ -25,8 +25,8 @@ pip install -e .
 from dap_sdk import DAPPrincipal, Verification
 
 principal = DAPPrincipal.generate(
-    principal_id="did:web:romashka.example",
-    name="OOO Romashka",
+    principal_id="did:web:acme-corp.example",
+    name="Acme Inc",
 )
 
 credential = principal.issue_credential(

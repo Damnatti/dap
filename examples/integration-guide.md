@@ -62,10 +62,10 @@ Handle `POST /dap/v1/register`. The request body looks like this:
   "credential": "<signed JWT or W3C VC>",
   "agent_card": {
     "name": "Procurement Agent v2",
-    "description": "Supplier matching for OOO Romashka",
+    "description": "Supplier matching for Acme Inc",
     "version": "2.1.0",
     "capabilities": ["search", "compare"],
-    "callback_url": "https://romashka.ru/agents/abc123/callback"
+    "callback_url": "https://acme-corp.example/agents/abc123/callback"
   }
 }
 ```
@@ -178,7 +178,7 @@ What to check:
 
 Key resolution differs from self-issued credentials:
 
-- **Self-issued (organization):** resolve the public key from `principal_id` (e.g., `did:web:romashka.ru` -> fetch `https://romashka.ru/.well-known/did.json`)
+- **Self-issued (organization):** resolve the public key from `principal_id` (e.g., `did:web:acme-corp.example` -> fetch `https://acme-corp.example/.well-known/did.json`)
 - **Delegated (individual):** resolve the public key from `issuer_id` (e.g., `https://dap-wallet.example` -> fetch `https://dap-wallet.example/.well-known/dap/jwks.json`)
 
 The `principal_id` in a delegated credential identifies who the agent acts for, but the cryptographic trust chain goes through the issuer. Your service trusts the issuer's assertion that the principal is who they claim to be.

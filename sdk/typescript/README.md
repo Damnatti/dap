@@ -95,6 +95,20 @@ Server-side handler that verifies credentials and issues access tokens.
 
 `self` < `email` < `phone` < `oauth` < `domain` < `document` < `organization`
 
+## Demo
+
+Run the interactive demo with 4 real-world scenarios:
+
+```bash
+npm run demo
+```
+
+Or run the basic end-to-end example:
+
+```bash
+npm run example
+```
+
 ## Spec
 
 Full protocol specification: [DAP v0.1](https://github.com/dap-protocol/dap/blob/main/spec/v0.1.md)

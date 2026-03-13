@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "example": "tsx examples/end-to-end.ts"
+    "example": "tsx examples/end-to-end.ts",
+    "demo": "tsx examples/demo.ts"
   },
   "repository": {
     "type": "git",
